@@ -41,7 +41,12 @@ public class StudentService {
     }
 
     public ResponseEntity<?> update(Student student,Long id){
-        return new ResponseEntity<>("",HttpStatus.OK);
+        if(!rep.existsById(id)){
+            msg.setMessage("Não existe");
+            return new ResponseEntity<>(msg, HttpStatus.NOT_FOUND);
+        }
+        student.setId(id);
+        return new ResponseEntity<>(rep.save(student),HttpStatus.OK);
     }
     
     public ResponseEntity<?> delete(Long id){
