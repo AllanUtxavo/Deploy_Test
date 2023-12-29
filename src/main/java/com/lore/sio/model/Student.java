@@ -1,10 +1,16 @@
 package com.lore.sio.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumns;
+import javax.persistence.ManyToMany;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
@@ -27,6 +33,18 @@ public class Student {
     private String nacionality;
     private String gender;
     private String province;
+
+    @JsonIgnore
+    @ManyToMany (mappedBy="students")
+    private List<Sponsor> sponsors;
+
+    public List<Sponsor> getSponsors() {
+        return sponsors;
+    }
+
+    public void setSponsors(List<Sponsor> sponsors) {
+        this.sponsors = sponsors;
+    }
 
     public String getProvince() {
         return province;
@@ -60,10 +78,6 @@ public class Student {
     public void setId(Long id){
         this.id=id;
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> 9b03868fc046e1121529b87e6b009a5ded42dc24
     public String getName(){
         return name;
     }

@@ -38,6 +38,11 @@ public class SponsorController {
         return serv.create(sponsor);
     }
 
+     @PostMapping("/add/student/{sponsor_id}/{student_id}")
+    public ResponseEntity<?> addStudent(@PathVariable("sponsor_id") Long sponsor, @PathVariable("student_id") Long student){
+        return serv.addStudent(sponsor, student);
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@RequestBody Sponsor sponsor,@PathVariable("id") Long id){
         return serv.update(sponsor, id);

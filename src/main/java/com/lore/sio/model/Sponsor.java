@@ -1,8 +1,13 @@
 package com.lore.sio.model;
 
 import javax.persistence.Table;
+
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
@@ -19,6 +24,17 @@ public class Sponsor {
     private String tel2;
     private String address;
 
+    @ManyToMany
+    @JoinColumn(name="sponsors")
+    private List<Student> students;
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
 
     public Long getId(){
         return id;

@@ -21,11 +21,17 @@ public class StudentController {
     @Autowired
     private StudentService serv;
 
+
     @GetMapping("/{id}")
     public ResponseEntity<?> list(@PathVariable("id") Long id){
         return serv.list(id);
     } 
 
+    @PostMapping("add/sponsor/{studentId}/{sponsorId}")
+    public ResponseEntity<?> addSponsor(@PathVariable("studentId") Long studentId,@PathVariable("sponsorId") Long sponsorId){
+      return serv.addSponsor(studentId,sponsorId);
+    }
+    
     @GetMapping
     public ResponseEntity<?> list(){
         return serv.list();
