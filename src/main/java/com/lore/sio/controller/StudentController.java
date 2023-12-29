@@ -36,8 +36,8 @@ public class StudentController {
         return serv.create(student);
     }
 
-    @PutMapping
-    public ResponseEntity<?> update(@RequestBody Student student, Long id){
+    @PutMapping("/{id}")
+    public ResponseEntity<?> update(@RequestBody Student student,@PathVariable("id") Long id){
         return serv.update(student, id);
     }
 

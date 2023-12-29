@@ -24,11 +24,42 @@ public class Student {
     private String tel2;
     private String address;
     private String email;
+    private String nacionality;
+    private String gender;
+    private String province;
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    
+    public void setNacionality(String nacionality) {
+        this.nacionality = nacionality;
+    }
+
+    public String getNacionality() {
+        return nacionality;
+    }
 
     public Long getId(){
         return id;
     }
 
+    public void setId(Long id){
+        this.id=id;
+    }
     public String getName(){
         return name;
     }
