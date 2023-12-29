@@ -60,6 +60,10 @@ public class Student {
     public void setId(Long id){
         this.id=id;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9b03868fc046e1121529b87e6b009a5ded42dc24
     public String getName(){
         return name;
     }
