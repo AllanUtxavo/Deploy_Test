@@ -3,9 +3,13 @@ package com.lore.sio.model;
 import javax.persistence.Table;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="enrollments")
@@ -14,12 +18,49 @@ public class Enrollment {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
+    private Date date= new Date();
+    @ManyToMany
+    @JoinColumn(name="enrollments")
+    private List<Course> courses;
+ 
+    @ManyToOne
+    @JoinColumn(name="period_id")
+    private Period period;
+    @ManyToOne
+    @JoinColumn(name="location_id")
+    private Location location;
+    @ManyToOne
+    @JoinColumn(name="student_id")
+    private Student student;
 
-    private String course;
-    private String period;
-    private String location;
-    private Date date;
+      public List<Course> getCourses() {
+        return courses;
+    }
 
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
+  
+
+   
+
+    public void setPeriod(Period period) {
+        this.period = period;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+  
 
     public Long getId(){
         return id;
@@ -27,30 +68,6 @@ public class Enrollment {
 
     public void setId(Long id){
         this.id=id;
-    }
-
-    public String getCourse(){
-        return course;
-    }
-
-    public void setCourse(String course){
-        this.course=course;
-    }
-
-    public String getPeriod(){
-        return period;
-    }
-
-    public void setPeriod(String period){
-        this.period=period;
-    }
-
-    public String getLocation(){
-        return location;
-    }
-
-    public void setLocation(String location){
-        this.location=location;
     }
 
     public Date getDate(){

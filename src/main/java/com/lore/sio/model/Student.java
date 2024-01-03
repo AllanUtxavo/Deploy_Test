@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
@@ -33,10 +34,32 @@ public class Student {
     private String nacionality;
     private String gender;
     private String province;
+    private Date date= new Date();
+
+    @OneToMany(mappedBy="student")
+    private List<Enrollment> enrollments;
 
     @JsonIgnore
     @ManyToMany (mappedBy="students")
     private List<Sponsor> sponsors;
+    
+    public List<Enrollment> getEnrollments() {
+        return enrollments;
+    }
+
+    public void setEnrollments(List<Enrollment> enrollments) {
+        this.enrollments = enrollments;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    
 
     public List<Sponsor> getSponsors() {
         return sponsors;

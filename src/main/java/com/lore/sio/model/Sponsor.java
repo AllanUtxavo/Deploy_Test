@@ -2,6 +2,7 @@ package com.lore.sio.model;
 
 import javax.persistence.Table;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -18,6 +19,14 @@ public class Sponsor {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
+    private Date date= new Date();
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     private String name;
     private String tel1;

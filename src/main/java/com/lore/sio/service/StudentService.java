@@ -64,10 +64,47 @@ public class StudentService {
     }
 
     public ResponseEntity<?> create(Student student){
+        if(rep.existsByEmail(student.getEmail())) {
+            msg.setMessage("Já existe uma conta com o email indicado");
+            return new ResponseEntity<>(msg,HttpStatus.BAD_REQUEST);
+        }else if(rep.existsByTel1(student.getTel1())) {
+            msg.setMessage("Já existe uma conta com o telefone indicado");
+            return new ResponseEntity<>(msg,HttpStatus.BAD_REQUEST);
+        }else if(rep.existsByTel2(student.getTel2())) {
+            msg.setMessage("Já existe uma conta com o telefone indicado");
+            return new ResponseEntity<>(msg,HttpStatus.BAD_REQUEST);
+        }else if(student.getTel1().equals(student.getTel2())){
+            msg.setMessage("Os números de telefone nao devem ser iguais");
+            return new ResponseEntity<>(msg,HttpStatus.BAD_REQUEST);
+        }
+
         return new ResponseEntity<>(rep.save(student),HttpStatus.OK);
+
     }
 
     public ResponseEntity<?> update(Student student,Long id){
+        Optional<Student> std=rep.findById(id);
+        if(!std.isPresent()) {
+            msg.setMessage("A conta indicada pelo id "+id+" não existe");
+            return new ResponseEntity<>(msg,HttpStatus.NOT_FOUND);
+        }
+        else if(!std.get().getEmail().equals(student.getEmail())){
+            if(rep.existsByEmail(student.getEmail())) {
+                msg.setMessage("Já existe uma conta com o email indicado");
+                return new ResponseEntity<>(msg,HttpStatus.BAD_REQUEST);
+            }
+        }else if(!std.get().getTel1().equals(student.getTel1())){
+            if(rep.existsByTel1(student.getTel1())) {
+                msg.setMessage("Já existe uma conta com o telefone indicado");
+                return new ResponseEntity<>(msg,HttpStatus.BAD_REQUEST);
+            }
+        }else if(!std.get().getTel2().equals(student.getTel2())){
+            if(rep.existsByTel2(student.getTel2())) {
+                msg.setMessage("Já existe uma conta com o telefone indicado");
+                return new ResponseEntity<>(msg,HttpStatus.BAD_REQUEST);
+            }
+        }
+        student.setId(std.get().getId());
         return new ResponseEntity<>("",HttpStatus.OK);
     }
     
