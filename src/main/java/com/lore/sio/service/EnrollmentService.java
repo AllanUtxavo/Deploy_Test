@@ -108,7 +108,7 @@ public class EnrollmentService {
             return new ResponseEntity<>(msg,HttpStatus.NOT_FOUND);
         }
         rep.deleteById(id);
-        msg.setMessage("Deletado com sucesso");
+        msg.setMessage("Deletado com sucesso!");
         return new ResponseEntity<>(msg,HttpStatus.OK);
     }
     

@@ -74,6 +74,7 @@ public class SponsorService {
             return new ResponseEntity<>(msg, HttpStatus.NOT_FOUND);
         }
         sponsor.setId(id);
+        msg.setMessage("Encarregado actualizado com sucesso!");
         return new ResponseEntity<>(rep.save(sponsor),HttpStatus.OK);
     }
 
@@ -83,7 +84,7 @@ public class SponsorService {
             return new ResponseEntity<>(msg,HttpStatus.NOT_FOUND);
         }
         rep.deleteById(id);
-        msg.setMessage("Deletado com sucesso");
+        msg.setMessage("Encarregado deletado com sucesso");
         return new ResponseEntity<>(msg,HttpStatus.OK);
     }
     

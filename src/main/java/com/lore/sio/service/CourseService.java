@@ -56,10 +56,10 @@ public class CourseService {
         Optional<Course> course=rep.findById(courseId);
         Optional<Location> location=locationRep.findById(locationId);
         if(!course.isPresent()){
-            msg.setMessage("A conta de estudante indicada não existe");
+            msg.setMessage("O curso indicado não existe");
             return new ResponseEntity<>(msg,HttpStatus.BAD_REQUEST);
         }else if(!location.isPresent()){
-            msg.setMessage("A conta de encarregado indicada não existe");
+            msg.setMessage("A localização indicada não existe");
             return new ResponseEntity<>(msg,HttpStatus.BAD_REQUEST);
         }
         Course crs=course.get();
@@ -68,17 +68,17 @@ public class CourseService {
         if(!crs.getLocations().contains(lct))crs.getLocations().add(lct);
         locationRep.save(lct);
         rep.save(crs);
-        msg.setMessage("Local adicionado com sucesso");
+        msg.setMessage("Localização adicionada com sucesso!");
         return new ResponseEntity<>(msg,HttpStatus.OK);
     }
     public ResponseEntity<?> addPeriod(Long courseId, Long periodId){
         Optional<Course> course=rep.findById(courseId);
         Optional<Period> period=periodRep.findById(periodId);
         if(!course.isPresent()){
-            msg.setMessage("A conta de estudante indicada não existe");
+            msg.setMessage("O curso indicado não existe");
             return new ResponseEntity<>(msg,HttpStatus.BAD_REQUEST);
         }else if(!period.isPresent()){
-            msg.setMessage("A conta de encarregado indicada não existe");
+            msg.setMessage("O periodo indicado não existe");
             return new ResponseEntity<>(msg,HttpStatus.BAD_REQUEST);
         }
         Course crs=course.get();
@@ -96,6 +96,7 @@ public class CourseService {
             return new ResponseEntity<>(msg, HttpStatus.NOT_FOUND);
         }
         course.setId(id);
+        msg.setMessage("Curso actualizado com sucesso");
         return new ResponseEntity<>(rep.save(course),HttpStatus.OK);
     }
     
@@ -105,7 +106,7 @@ public class CourseService {
             return new ResponseEntity<>(msg,HttpStatus.NOT_FOUND);
         }
         rep.deleteById(id);
-        msg.setMessage("Deletado com sucesso");
+        msg.setMessage("Curso deletado com sucesso");
         return new ResponseEntity<>(msg,HttpStatus.OK);
     }
 }

@@ -35,7 +35,7 @@ public class PeriodService {
     public ResponseEntity<?> list(){
         List<Period> periods=rep.findAll();
         if(periods.size()<=0){
-            msg.setMessage("Nenhum period foi achado");
+            msg.setMessage("Nenhum periodo foi achado");
             return new ResponseEntity<>(msg,HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(periods,HttpStatus.OK);
@@ -70,6 +70,7 @@ public class PeriodService {
             return new ResponseEntity<>(msg, HttpStatus.NOT_FOUND);
         }
         period.setId(id);
+        msg.setMessage("Periodo actualizado com sucesso");
         return new ResponseEntity<>(rep.save(period),HttpStatus.OK);
     }
     
@@ -79,7 +80,7 @@ public class PeriodService {
             return new ResponseEntity<>(msg,HttpStatus.NOT_FOUND);
         }
         rep.deleteById(id);
-        msg.setMessage("Deletado com sucesso");
+        msg.setMessage("Periodo deletado com sucesso");
         return new ResponseEntity<>(msg,HttpStatus.OK);
     }
 }

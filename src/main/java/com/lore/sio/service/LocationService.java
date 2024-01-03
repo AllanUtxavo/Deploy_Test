@@ -73,6 +73,7 @@ public class LocationService {
             return new ResponseEntity<>(msg, HttpStatus.NOT_FOUND);
         }
         location.setId(id);
+        msg.setMessage("Localização actulizada com sucesso!");
         return new ResponseEntity<>(rep.save(location),HttpStatus.OK);
     }
     
