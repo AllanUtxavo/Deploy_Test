@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.lore</groupId>
 	<artifactId>sio</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>versao_1</version>
 	<name>sio</name>
 	<description>Sistema de Inscrição Online LORE</description>
 	<properties>

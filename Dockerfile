@@ -1,16 +1,16 @@
-FROM ubuntu:lastest AS build
+FROM ubuntu:latest AS build
 
 RUN apt-get update
-RUN apt-install openjdk-17-jdk -y
+RUN apt-get install openjdk-8-jdk -y
 COPY . .
 
-RUN apt-get  install maven -y
-RUN mvn clean install
+RUN apt-get install maven -y
+RUN mvn clean install 
 
-FROM openjdk:17-jdk-slim
+FROM openjdk:8-jdk-slim
 
 EXPOSE 8080
 
-COPY --from=build /target/sio-0.0.1-SNAPSHOT.jar app.jar
+COPY --from=build /target/sio-versao_1.jar app.jar
 
 ENTRYPOINT [ "java", "-jar", "app.jar" ]
