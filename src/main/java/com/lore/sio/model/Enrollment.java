@@ -19,6 +19,7 @@ public class Enrollment {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private Date date= new Date();
+    
     @ManyToMany
     @JoinColumn(name="enrollments")
     private List<Course> courses;
@@ -26,9 +27,11 @@ public class Enrollment {
     @ManyToOne
     @JoinColumn(name="period_id")
     private Period period;
+
     @ManyToOne
     @JoinColumn(name="location_id")
     private Location location;
+
     @ManyToOne
     @JoinColumn(name="student_id")
     private Student student;

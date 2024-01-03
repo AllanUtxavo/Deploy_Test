@@ -30,9 +30,11 @@ public class EnrollmentController {
         return serv.list();
     }
 
-    @PostMapping
-    public ResponseEntity<?> create(@RequestBody Enrollment enrollment){
-        return serv.create(enrollment);
+    @PostMapping("/{studentId}/{locationId}/{periodId}/{course01Id}/{course02Id}")
+    public ResponseEntity<?> create(@RequestBody Enrollment enrollment, @PathVariable("course01Id") Long course01Id,
+     @PathVariable("course02Id") Long course02Id, @PathVariable("periodId") Long periodId, @PathVariable("locationId") Long locationId,
+      @PathVariable("studentId") Long studentId){
+        return serv.create(enrollment, studentId, locationId, periodId, course01Id, course02Id );
     }
 
     @PutMapping("/{id}")

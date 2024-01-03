@@ -34,7 +34,10 @@ public class PeriodController {
     public ResponseEntity<?> create(@RequestBody Period period){
         return serv.create(period);
     }
-
+    @PostMapping("add/course/{courseId}/{locationId}")
+    public ResponseEntity<?> addCourse(@PathVariable("periodId") Long periodId, @PathVariable("courseId") Long courseId){
+        return serv.addCourse(courseId, periodId);
+    }
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@RequestBody Period period,@PathVariable("id") Long id){
         return serv.update(period, id);

@@ -7,6 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 import java.util.Date;
@@ -18,17 +21,21 @@ import java.util.List;
 public class Period {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
+    
     private long id;
     private String period_name;
     private String time_in;
     private String time_out;
+    private Date date= new Date();
 
+    @JsonIgnore
     @OneToMany(mappedBy="periods")
     private List<Course> courses;
 
-    private Date date= new Date();
+    @JsonIgnore
     @OneToMany(mappedBy="period")
     private List<Enrollment> enrollments;
+
     public List<Enrollment> getEnrollments() {
         return enrollments;
     }

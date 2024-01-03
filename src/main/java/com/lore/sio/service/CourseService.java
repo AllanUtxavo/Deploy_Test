@@ -68,7 +68,7 @@ public class CourseService {
         if(!crs.getLocations().contains(lct))crs.getLocations().add(lct);
         locationRep.save(lct);
         rep.save(crs);
-        msg.setMessage("Encarregado adicionado com sucesso");
+        msg.setMessage("Local adicionado com sucesso");
         return new ResponseEntity<>(msg,HttpStatus.OK);
     }
     public ResponseEntity<?> addPeriod(Long courseId, Long periodId){
@@ -87,7 +87,7 @@ public class CourseService {
         if(!crs.getPeriods().contains(prd))crs.getPeriods().add(prd);
         periodRep.save(prd);
         rep.save(crs);
-        msg.setMessage("Encarregado adicionado com sucesso");
+        msg.setMessage("Periodo adicionado com sucesso!");
         return new ResponseEntity<>(msg,HttpStatus.OK);
     }
   public ResponseEntity<?> update(Course course,Long id){

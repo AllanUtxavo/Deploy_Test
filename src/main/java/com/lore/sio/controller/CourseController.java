@@ -35,6 +35,15 @@ public class CourseController {
     public ResponseEntity<?> create(@RequestBody Course course){
         return serv.create(course);
     }
+    @PostMapping("add/location/{courseId}/{locationId}")
+    public ResponseEntity<?> addLocation(@PathVariable("courseId") Long courseId, @PathVariable("locationId") Long locationId){
+        return serv.addLocation(courseId, locationId);
+    }
+
+    @PostMapping("add/period/{courseId}/{periodId}")
+   public ResponseEntity<?> addPeriod(@PathVariable("courseId") Long courseId, @PathVariable("periodId") Long periodId){
+        return serv.addPeriod(courseId, periodId);
+    }
 
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@RequestBody Course course,@PathVariable("id") Long id){

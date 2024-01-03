@@ -7,6 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 import java.util.List;
 
@@ -18,13 +21,17 @@ public class Location {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
     private Date date= new Date();
-    private String local_name;
+    private String name;
+
+    @JsonIgnore
     @OneToMany(mappedBy="location")
     private List<Enrollment> enrollments;
 
+    @JsonIgnore
     @OneToMany(mappedBy="locations")
     private List<Course> courses;
-public List<Enrollment> getEnrollments() {
+
+    public List<Enrollment> getEnrollments() {
         return enrollments;
     }
     public void setEnrollments(List<Enrollment> enrollments) {
@@ -47,12 +54,12 @@ public List<Enrollment> getEnrollments() {
     }
    
 
-    public String getLocal_name() {
-        return local_name;
+    public String getName() {
+        return name;
     }
 
-    public void setLocal_name(String local_name) {
-        this.local_name = local_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public long getId() {

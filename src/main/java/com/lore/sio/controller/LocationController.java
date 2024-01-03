@@ -33,7 +33,10 @@ public class LocationController {
     public ResponseEntity<?> create(@RequestBody Location location){
         return serv.create(location);
     }
-
+    @PostMapping("add/course/{courseId}/{locationId}")
+   public ResponseEntity<?> addCourse(@PathVariable("locationId") Long locationId, @PathVariable("courseId") Long courseId){
+        return serv.addCourse(courseId, locationId);
+    }
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@RequestBody Location location,@PathVariable("id") Long id){
         return serv.update(location, id);

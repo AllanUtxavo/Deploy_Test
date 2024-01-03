@@ -5,6 +5,7 @@ import javax.persistence.Table;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -29,7 +30,10 @@ public class Sponsor {
     }
 
     private String name;
+
+    @Column(unique = true, nullable = false)
     private String tel1;
+    @Column(unique = true, nullable = false)
     private String tel2;
     private String address;
 

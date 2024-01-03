@@ -23,7 +23,7 @@ public class Course {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id; 
     private Date date= new Date();
-    private String course_name;
+    private String name;
     private String duracao;
    
 
@@ -35,8 +35,10 @@ public class Course {
     @JoinColumn(name="periods", nullable=false)
     private List<Period> periods;
 
+    @JsonIgnore
     @ManyToMany (mappedBy = "courses")
     private List<Enrollment> enrollments;
+
     public List<Enrollment> getEnrollments() {
         return enrollments;
     }
@@ -68,11 +70,11 @@ public class Course {
     public void setDate(Date date) {
         this.date = date;
     }
-    public String getCourse_name() {
-        return course_name;
+    public String getName() {
+        return name;
     }
-    public void setCourse_name(String course_name) {
-        this.course_name = course_name;
+    public void setName(String name) {
+        this.name = name;
     }
  
     

@@ -7,6 +7,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumns;
@@ -27,15 +28,24 @@ public class Student {
     private String  name;
     private String surname;
     private Date birthday;
+
+    @Column(unique = true, nullable = false)
     private String tel1;
+
+    @Column(unique = true, nullable = false)
     private String tel2;
+
     private String address;
+
+    @Column(unique = true, nullable = false)
     private String email;
+
     private String nacionality;
     private String gender;
     private String province;
     private Date date= new Date();
 
+    @JsonIgnore
     @OneToMany(mappedBy="student")
     private List<Enrollment> enrollments;
 

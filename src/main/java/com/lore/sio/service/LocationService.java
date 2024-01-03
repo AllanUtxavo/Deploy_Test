@@ -51,10 +51,10 @@ public class LocationService {
         Optional<Course> course=courseRep.findById(courseId);
         Optional<Location> location=rep.findById(locationId);
         if(!course.isPresent()){
-            msg.setMessage("A conta de estudante indicada não existe");
+            msg.setMessage("O curso indicado não existe");
             return new ResponseEntity<>(msg,HttpStatus.BAD_REQUEST);
         }else if(!location.isPresent()){
-            msg.setMessage("A conta de encarregado indicada não existe");
+            msg.setMessage("A localizacao indicada não existe");
             return new ResponseEntity<>(msg,HttpStatus.BAD_REQUEST);
         }
         Course crs=course.get();
@@ -63,7 +63,7 @@ public class LocationService {
         if(!crs.getLocations().contains(lct))crs.getLocations().add(lct);
         courseRep.save(crs);
         rep.save(lct);
-        msg.setMessage("Estudante associado com sucesso");
+        msg.setMessage("curso associado com sucesso");
         return new ResponseEntity<>(msg,HttpStatus.OK);
     }
 
