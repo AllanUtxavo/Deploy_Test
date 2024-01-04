@@ -50,7 +50,7 @@ public class EnrollmentService {
     public ResponseEntity<?> list(){
         List<Enrollment> enrollments=rep.findAll();
         if(enrollments.size()<=0){
-            msg.setMessage("Nenhuma pre-inscrição achada");
+            msg.setMessage("Nenhuma inscrição achada");
             return new ResponseEntity<>(msg,HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(enrollments,HttpStatus.OK);
@@ -64,12 +64,12 @@ public class EnrollmentService {
        }
        Optional<Location> location = locationRep.findById(locationId);
        if(!location.isPresent()){
-        msg.setMessage("A localizacao nao existe");
+        msg.setMessage("A localização não existe");
         return new ResponseEntity<>(msg,HttpStatus.NOT_FOUND);
        }
        Optional<Period> period = periodRep.findById(periodId);
        if(!period.isPresent()){
-        msg.setMessage("O periodo nao existe");
+        msg.setMessage("O periodo não existe");
         return new ResponseEntity<>(msg,HttpStatus.NOT_FOUND);
        }
         Optional<Course> course01 = courseRep.findById(course01Id);
