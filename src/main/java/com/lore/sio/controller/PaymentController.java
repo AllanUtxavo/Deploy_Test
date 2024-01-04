@@ -1,6 +1,5 @@
 package com.lore.sio.controller;
 
-
 import com.lore.sio.model.Payment;
 import com.lore.sio.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,20 +21,18 @@ public class PaymentController {
     @Autowired 
     private PaymentService serv;
 
-
-    @GetMapping("/")
-    public ResponseEntity<?> list(){
-      return serv.list();
-    }
-
     @GetMapping("/{id}")
     public ResponseEntity<?> list(@PathVariable("id") Long id){
       return serv.list(id);
     }
 
-    @PostMapping("/")
-    public ResponseEntity<?> create(@RequestBody Payment payment){
+    @GetMapping
+    public ResponseEntity<?> list(){
+      return serv.list();
+    }
 
+    @PostMapping
+    public ResponseEntity<?> create(@RequestBody Payment payment){
       return serv.create(payment);
     }  
 

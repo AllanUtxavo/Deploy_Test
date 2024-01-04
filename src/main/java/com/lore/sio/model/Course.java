@@ -9,15 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="course")
-
 public class Course {
    @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -48,11 +45,11 @@ public class Course {
         this.enrollments = enrollments;
     }
     public List<Period> getPeriods() {
-    return periods;
-}
+        return periods;
+    }
     public void setPeriods(List<Period> periods) {
-    this.periods = periods;
-}
+        this.periods = periods;
+    }
     public List<Location> getLocations() {
         return locations;
     }
@@ -60,12 +57,11 @@ public class Course {
         this.locations = locations;
     }
     public Long getId() {
-    return id;
-}
+        return id;
+    }
     public void setId(Long id) {
-    this.id = id;
-}
-
+        this.id = id;
+    }
     public Date getDate() {
         return date;
     }
@@ -86,14 +82,11 @@ public class Course {
     public void setEnrollment_fee(double enrollment_fee) {
         this.enrollment_fee = enrollment_fee;
     }
-    
-public String getDuracao() {
+    public String getDuracao() {
         return duracao;
     }
     public void setDuracao(String duracao) {
         this.duracao = duracao;
     }
   
-    
-    
 }
