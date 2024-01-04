@@ -1,13 +1,6 @@
 package com.lore.sio.model;
 
-import javax.persistence.Table;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
@@ -35,6 +28,19 @@ public class Enrollment {
     @ManyToOne
     @JoinColumn(name="student_id")
     private Student student;
+
+
+    @OneToOne
+    @JoinColumn(name="payment_id")
+    private Payment payment;
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
+    }
 
       public List<Course> getCourses() {
         return courses;

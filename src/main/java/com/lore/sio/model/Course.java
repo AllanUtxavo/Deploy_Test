@@ -25,7 +25,9 @@ public class Course {
     private Date date= new Date();
     private String name;
     private String duracao;
-   
+    private double  enrollment_fee;
+
+
 
     @ManyToMany
     @JoinColumn(name="locations", nullable=false)
@@ -76,7 +78,14 @@ public class Course {
     public void setName(String name) {
         this.name = name;
     }
- 
+
+    public double getEnrollment_fee() {
+        return enrollment_fee;
+    }
+
+    public void setEnrollment_fee(double enrollment_fee) {
+        this.enrollment_fee = enrollment_fee;
+    }
     
 public String getDuracao() {
         return duracao;
