@@ -8,7 +8,7 @@ COPY pom.xml .
 COPY src src
 
 RUN apt-get install maven -y
-RUN mvn clean install 
+RUN mvn clean package
 
 FROM openjdk:8-jdk-slim
 
