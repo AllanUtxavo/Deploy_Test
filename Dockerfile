@@ -1,17 +1,31 @@
+# Stage 1: Build stage
 FROM ubuntu:latest AS build
 
-RUN apt-get update
-RUN apt-get install openjdk-8-jdk -y
+# Set the working directory
+WORKDIR /app
 
-COPY . .
+# Copy only the pom.xml to leverage Docker layer caching
+COPY pom.xml .
 
-RUN apt-get install maven -y
-RUN mvn clean package
+# Copy the rest of the application files
+COPY src src
 
+# Install dependencies and build the project
+RUN apt-get update && \
+    apt-get install -y openjdk-8-jdk maven && \
+    mvn clean package
+
+# Stage 2: Runtime stage
 FROM openjdk:8-jdk-slim
 
+# Set the working directory
+WORKDIR /app
+
+# Expose the port
 EXPOSE 8080
 
-COPY --from=build /target/sio-versao_1.jar app.jar
+# Copy the JAR file from the build stage
+COPY --from=build /app/target/sio-versao_1.jar app.jar
 
-ENTRYPOINT [ "java", "-jar", "app.jar" ]
+# Define the entry point
+ENTRYPOINT ["java", "-jar", "app.jar"]
