@@ -2,6 +2,7 @@ package com.lore.sio.controller;
 
 import com.lore.sio.model.Sponsor;
 import com.lore.sio.service.SponsorService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.lore.sio.service.SponsorService;
 import com.lore.sio.model.Sponsor;
 
+@CrossOrigin("localhost:3000")
 @RestController
 @RequestMapping("/sponsor")
 public class SponsorController {

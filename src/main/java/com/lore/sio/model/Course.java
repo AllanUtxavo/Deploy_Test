@@ -21,7 +21,7 @@ public class Course {
     private Long id; 
     private Date date= new Date();
     private String name;
-    private String duracao;
+    private String duration;
     private double  enrollment_fee;
 
 
@@ -82,11 +82,11 @@ public class Course {
     public void setEnrollment_fee(double enrollment_fee) {
         this.enrollment_fee = enrollment_fee;
     }
-    public String getDuracao() {
-        return duracao;
+    public String getDuration() {
+        return duration;
     }
-    public void setDuracao(String duracao) {
-        this.duracao = duracao;
+    public void setDuration(String duration) {
+        this.duration = duration;
     }
   
 }

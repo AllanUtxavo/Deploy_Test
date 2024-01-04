@@ -10,8 +10,6 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.*;
-
 import java.util.Date;
 import java.util.List;
 
@@ -21,9 +19,8 @@ import java.util.List;
 public class Period {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    
     private long id;
-    private String period_name;
+    private String name;
     private String time_in;
     private String time_out;
     private Date date= new Date();
@@ -59,14 +56,12 @@ public class Period {
         this.id = id;
     }
 
-    
-
-     public String getPeriod_name() {
-        return period_name;
+    public String getName() {
+        return name;
     }
 
-    public void setPeriod_name(String period_name) {
-        this.period_name = period_name;
+    public void setName(String name) {
+        this.name = name;
     }
     public String getTime_in() {
         return time_in;

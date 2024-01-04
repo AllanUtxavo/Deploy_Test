@@ -2,6 +2,7 @@ package com.lore.sio.controller;
 
 import com.lore.sio.model.Enrollment;
 import com.lore.sio.service.EnrollmentService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 
+@CrossOrigin("localhost:3000")
 @RestController
 @RequestMapping("/enrollment")
 public class EnrollmentController {

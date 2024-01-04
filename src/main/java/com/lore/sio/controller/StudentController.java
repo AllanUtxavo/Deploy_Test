@@ -1,5 +1,6 @@
 package com.lore.sio.controller;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.lore.sio.service.StudentService;
 import com.lore.sio.model.Student;
 
+@CrossOrigin("localhost:3000")
 @RestController
 @RequestMapping("/student")
 public class StudentController {

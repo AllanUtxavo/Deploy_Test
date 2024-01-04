@@ -2,6 +2,7 @@ package com.lore.sio.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lore.sio.model.Period;
 import com.lore.sio.service.PeriodService;
 
-
+@CrossOrigin("http://localhost:3000")
 @RestController
 @RequestMapping("/period")
 public class PeriodController {
