@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 
-@CrossOrigin("localhost:3000")
+@CrossOrigin("http://localhost:3000")
 @RestController
 @RequestMapping("/payment")
 public class PaymentController {

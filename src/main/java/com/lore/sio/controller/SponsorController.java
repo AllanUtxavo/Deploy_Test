@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.lore.sio.service.SponsorService;
 import com.lore.sio.model.Sponsor;
 
-@CrossOrigin("localhost:3000")
+@CrossOrigin("http://localhost:3000")
 @RestController
 @RequestMapping("/sponsor")
 public class SponsorController {
@@ -40,7 +40,7 @@ public class SponsorController {
         return serv.create(sponsor);
     }
 
-     @PostMapping("/add/student/{sponsor_id}/{student_id}")
+    @PostMapping("/add/student/{sponsor_id}/{student_id}")
     public ResponseEntity<?> addStudent(@PathVariable("sponsor_id") Long sponsor, @PathVariable("student_id") Long student){
         return serv.addStudent(sponsor, student);
     }

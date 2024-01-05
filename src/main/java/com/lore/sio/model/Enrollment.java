@@ -7,10 +7,19 @@ import java.util.List;
 @Entity
 @Table(name="enrollments")
 public class Enrollment {
+    @Transient
+    private final String STATUS_ONE="ACTIVA";
+    
+    @Transient
+    private final String STATUS_TWO="PENDENTE";
+
+    @Transient
+    private final String STATUS_THRE="CANCELADA";
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
+    private String status = STATUS_TWO;
     private Date date= new Date();
     
     @ManyToMany
@@ -49,9 +58,6 @@ public class Enrollment {
     public void setCourses(List<Course> courses) {
         this.courses = courses;
     }
-  
-
-   
 
     public void setPeriod(Period period) {
         this.period = period;
@@ -86,5 +92,23 @@ public class Enrollment {
     public void setDate(Date date){
         this.date=date;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Period getPeriod() {
+        return period;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    
     
 }

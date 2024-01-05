@@ -15,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.lore.sio.service.StudentService;
 import com.lore.sio.model.Student;
 
-@CrossOrigin("localhost:3000")
+@CrossOrigin("http://localhost:3000")
 @RestController
 @RequestMapping("/student")
 public class StudentController {

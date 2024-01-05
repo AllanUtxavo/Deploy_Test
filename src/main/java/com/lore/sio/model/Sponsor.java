@@ -20,22 +20,12 @@ public class Sponsor {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    private Date date= new Date();
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
 
     private String name;
-
-    @Column(unique = true, nullable = false)
-    private String tel1;
-    @Column(unique = true, nullable = false)
+    private String tel1;   
     private String tel2;
     private String address;
+    private Date date= new Date();
 
     @ManyToMany
     @JoinColumn(name="sponsors")
@@ -55,6 +45,14 @@ public class Sponsor {
 
     public void setId(Long id){
         this.id=id;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public String getName(){

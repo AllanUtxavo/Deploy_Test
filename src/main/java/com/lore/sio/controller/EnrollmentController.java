@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@CrossOrigin("localhost:3000")
+@CrossOrigin("http://localhost:3000")
 @RestController
 @RequestMapping("/enrollment")
 public class EnrollmentController {
@@ -33,11 +33,13 @@ public class EnrollmentController {
     }
 
     @PostMapping("/{studentId}/{locationId}/{periodId}/{course01Id}/{course02Id}")
-    public ResponseEntity<?> create(@RequestBody Enrollment enrollment, @PathVariable("course01Id") Long course01Id,
+    public ResponseEntity<?> create(@PathVariable("course01Id") Long course01Id,
      @PathVariable("course02Id") Long course02Id, @PathVariable("periodId") Long periodId, @PathVariable("locationId") Long locationId,
       @PathVariable("studentId") Long studentId){
-        return serv.create(enrollment, studentId, locationId, periodId, course01Id, course02Id );
+        return serv.create(studentId, locationId, periodId, course01Id, course02Id );
     }
+
+    
 
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@RequestBody Enrollment enrollment,@PathVariable("id") Long id){

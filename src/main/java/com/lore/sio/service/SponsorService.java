@@ -44,6 +44,17 @@ public class SponsorService {
     }
 
     public ResponseEntity<?> create(Sponsor sponsor){
+        if(rep.existsByTel1(sponsor.getTel1())) {
+            msg.setMessage("Já existe uma conta com o primeiro telefone indicado");
+            return new ResponseEntity<>(msg,HttpStatus.BAD_REQUEST);
+        }else if(rep.existsByTel2(sponsor.getTel2())) {
+            msg.setMessage("Já existe uma conta com o segundo telefone indicado");
+            return new ResponseEntity<>(msg,HttpStatus.BAD_REQUEST);
+        }else if(sponsor.getTel1().equals(sponsor.getTel2())){
+            msg.setMessage("Os números de telefone nao devem ser iguais");
+            return new ResponseEntity<>(msg,HttpStatus.BAD_REQUEST);
+        }
+
         return new ResponseEntity<>(rep.save(sponsor),HttpStatus.OK);
     }
 
@@ -69,9 +80,20 @@ public class SponsorService {
     }
 
     public ResponseEntity<?> update(Sponsor sponsor,Long id){
-        if(!rep.existsById(id)){
+        Optional<Sponsor> sps=rep.findById(id);
+        if(!sps.isPresent()){
             msg.setMessage("Não existe");
             return new ResponseEntity<>(msg, HttpStatus.NOT_FOUND);
+        }else if(!sps.get().getTel1().equals(sponsor.getTel1())){
+            if(rep.existsByTel1(sponsor.getTel1())) {
+                msg.setMessage("Já existe uma conta com o primeiro telefone indicado");
+                return new ResponseEntity<>(msg,HttpStatus.BAD_REQUEST);
+            }
+        }else if(!sps.get().getTel2().equals(sponsor.getTel2())){
+            if(rep.existsByTel2(sponsor.getTel2())) {
+                msg.setMessage("Já existe uma conta com o segundo telefone indicado");
+                return new ResponseEntity<>(msg,HttpStatus.BAD_REQUEST);
+            }
         }
         sponsor.setId(id);
         msg.setMessage("Encarregado actualizado com sucesso!");

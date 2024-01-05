@@ -32,17 +32,17 @@ public class Student {
     @Column(unique = true, nullable = false)
     private String tel1;
 
-    @Column(unique = true, nullable = false)
     private String tel2;
 
     private String address;
 
-    @Column(unique = true, nullable = false)
     private String email;
 
     private String nacionality;
     private String gender;
     private String province;
+    private String desease;
+    private String degree;
     private Date date= new Date();
 
     @JsonIgnore
@@ -69,8 +69,6 @@ public class Student {
         this.date = date;
     }
 
-    
-
     public List<Sponsor> getSponsors() {
         return sponsors;
     }
@@ -95,7 +93,6 @@ public class Student {
         this.gender = gender;
     }
 
-    
     public void setNacionality(String nacionality) {
         this.nacionality = nacionality;
     }
@@ -166,5 +163,22 @@ public class Student {
     public void setEmail(String email){
         this.email=email;
     }
+
+    public String getDesease() {
+        return desease;
+    }
+
+    public void setDesease(String desease) {
+        this.desease = desease;
+    }
+
+    public String getDegree() {
+        return degree;
+    }
+
+    public void setDegree(String degree) {
+        this.degree = degree;
+    }
+    
 
 }

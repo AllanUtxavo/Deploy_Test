@@ -56,8 +56,9 @@ public class EnrollmentService {
         return new ResponseEntity<>(enrollments,HttpStatus.OK);
     }
 
-    public ResponseEntity<?> create(Enrollment enrollment, Long studentId, Long locationId, Long periodId, Long course01Id, Long course02Id){
-       Optional<Student> student = studentRep.findById(studentId);
+    public ResponseEntity<?> create(Long studentId, Long locationId, Long periodId, Long course01Id, Long course02Id){
+        Enrollment enrollment=new Enrollment();
+        Optional<Student> student = studentRep.findById(studentId);
        if(!student.isPresent()){
         msg.setMessage("O estudante nao existe");
         return new ResponseEntity<>(msg,HttpStatus.NOT_FOUND);
