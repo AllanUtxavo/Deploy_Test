@@ -22,8 +22,8 @@ public class Course {
     private Date date= new Date();
     private String name;
     private String duration;
-    private double  enrollment_fee;
-
+    private double enrollment_fee;
+    private double price;
 
 
     @ManyToMany
@@ -88,5 +88,12 @@ public class Course {
     public void setDuration(String duration) {
         this.duration = duration;
     }
+    public double getPrice() {
+        return price;
+    }
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
   
 }

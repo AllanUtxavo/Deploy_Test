@@ -8,11 +8,13 @@ import org.springframework.stereotype.Service;
 import com.lore.sio.repository.CourseRepository;
 import com.lore.sio.repository.EnrollmentRepository;
 import com.lore.sio.repository.LocationRepository;
+import com.lore.sio.repository.PaymentRepository;
 import com.lore.sio.repository.PeriodRepository;
 import com.lore.sio.repository.StudentRepository;
 import com.lore.sio.model.Course;
 import com.lore.sio.model.Enrollment;
 import com.lore.sio.model.Location;
+import com.lore.sio.model.Payment;
 import com.lore.sio.model.Period;
 import com.lore.sio.model.Student;
 
@@ -34,6 +36,8 @@ public class EnrollmentService {
     private PeriodRepository periodRep;
     @Autowired
     private CourseRepository courseRep;
+    @Autowired
+    private PaymentRepository paymentRep;
 
     @Autowired
     private Message msg;
@@ -90,6 +94,9 @@ public class EnrollmentService {
         courses.add(course01.get());
         courses.add(course02.get());
         enrollment.setCourses(courses);
+        Payment payment=new Payment();
+        payment.setDebtValue(course01.get().getEnrollment_fee());
+        enrollment.setPayment(paymentRep.save(payment));
 
         return new ResponseEntity<>(rep.save(enrollment),HttpStatus.OK);
     }
