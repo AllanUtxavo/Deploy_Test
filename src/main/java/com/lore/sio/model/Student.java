@@ -30,13 +30,13 @@ public class Student {
     private Date birthday;
 
     @Column(unique = true, nullable = false)
-    private String tel1;
+    private String tel1="";
 
-    private String tel2;
+    private String tel2="";
 
     private String address;
 
-    private String email;
+    private String email="";
 
     private String nacionality;
     private String gender;

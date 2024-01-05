@@ -22,8 +22,8 @@ public class Sponsor {
     private Long id;
 
     private String name;
-    private String tel1;   
-    private String tel2;
+    private String tel1="";   
+    private String tel2="";
     private String address;
     private Date date= new Date();
 
