@@ -1,8 +1,13 @@
-FROM ubuntu:latest AS build
+FROM ubuntu:latest
 
 RUN apt-get update
 RUN apt-get install openjdk-8-jdk -y
-COPY . .
+
+# Defina um diretório de trabalho para os arquivos do projeto
+WORKDIR /app
+
+# Copie os arquivos do seu projeto para o diretório de trabalho no contêiner
+COPY . /app
 
 RUN apt-get install maven -y
 RUN mvn clean install 
