@@ -12,7 +12,8 @@ COPY src src
 
 # Install dependencies and build the project
 RUN apt-get update 
-RUN apt-get install -y openjdk-8-jdk maven 
+RUN apt-get install openjdk-8-jdk -y
+RUN install maven -y 
 RUN mvn clean install
 
 # Stage 2: Runtime stage
