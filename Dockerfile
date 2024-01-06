@@ -9,8 +9,13 @@ COPY pom.xml .
 COPY src src
 
 
-RUN apt-get update
-RUN apt-get install openjdk-8-jdk -y
+# Install dependencies and build the project
+RUN apt-get update && \
+    apt-get install -y openjdk-8-jdk maven && \
+    mvn clean package
+
+# Stage 2: Runtime stage
+FROM openjdk:8-jdk-slim
 
 
 # Copie os arquivos do seu projeto para o diretório de trabalho no contêiner
