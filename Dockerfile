@@ -1,4 +1,13 @@
-FROM ubuntu:latest
+FROM ubuntu:latest AS build
+
+WORKDIR /app
+
+# Copy only the pom.xml to leverage Docker layer caching
+COPY pom.xml .
+
+# Copy the rest of the application files
+COPY src src
+
 
 RUN apt-get update
 RUN apt-get install openjdk-8-jdk -y
