@@ -11,7 +11,9 @@ COPY pom.xml .
 COPY src src
 
 # Install dependencies and build the project
-RUN apt-get update && apt-get install -y openjdk-8-jdk maven && mvn clean package
+RUN apt-get update 
+RUN apt-get install -y openjdk-8-jdk maven 
+RUN mvn clean package
 
 # Stage 2: Runtime stage
 FROM openjdk:8-jdk-slim
